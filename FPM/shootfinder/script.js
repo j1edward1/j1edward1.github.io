@@ -77,8 +77,8 @@ function jQURL(url, addx) {
 				"<span></span>"
 			);
 
-			save_search(html,url,addx);
-			//window.open(url, '_blank');
+			//save_search(html,url,addx);
+			window.open(url, '_blank');
 		}
 	});
 }
