@@ -65,19 +65,22 @@
 				
 				<div id="wrapper">
 					<br><br> <h1>Enter Shoot Address</h1> <br><br><br>
-					<textarea id="addy">11166 Parliament Ln
-Frisco, TX, 75035</textarea>
+					<textarea id="addy">123 ABC Lane</textarea>
 					<br style="padding:0px;margin:0px;"/>
 					<input type="button" class="clearInput" id="fpm" value="Find"/>
 	
 	
-					<span hidden>302 S Benge St
+					<span hidden>
+					302 S Benge St
 					McKinney, TX 75069, USA
+					
+					11166 Parliament Ln
+					Frisco, TX, 75035
 					</span>
 					<br><div id="tha_link"></div>
 	
 				
-		<br><br><br><br><hr><br> <h2>Previous Searches</h2> <br><br>
+		<br><br><br><br><hr><br> <h2>Searches</h2> <br><br>
 					<div id="boxes">		
 					
 
@@ -114,7 +117,7 @@ Frisco, TX, 75035</textarea>
 	
 
 </body>
-<script src="https://j1edward1.github.io/FPM/shootfinder/script.js"></script>
+<!--script src="https://j1edward1.github.io/FPM/shootfinder/script.js"></script-->
 <script src="script.js"></script>
 <script>
 $(document).ready(function(){
@@ -139,6 +142,20 @@ $(document).ready(function(){
 			
 		}
 	});
+	
+	$("#addy").focus(function(){
+		if (document.getElementById("addy").innerHTML === "123 ABC Lane") {	
+			document.getElementById("addy").innerHTML = "";
+			document.getElementById("addy").style.color = "#232932";
+		}
+	});
+	$("#addy").blur(function(){
+		if (document.getElementById("addy").innerHTML === "") {	
+			document.getElementById("addy").innerHTML = "123 ABC Lane";
+			document.getElementById("addy").style.color = "#aeaeae";
+		}
+	});
+	
 });
 </script>
 </html>
