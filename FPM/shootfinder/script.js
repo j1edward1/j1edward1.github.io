@@ -1,6 +1,6 @@
 addEventListener('load', function(e) {
-	document.querySelector('h1').innerHTML = 'Enter Shoot Address';
-	document.querySelector('title').innerHTML = 'Shoot Finder | Full Package Media';
+//	document.querySelector('h1').innerHTML = 'Enter Shoot Address';
+//	document.querySelector('title').innerHTML = 'Shoot Finder | Full Package Media';
 });
 /////////////////////////////
 
