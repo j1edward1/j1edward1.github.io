@@ -134,6 +134,10 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	-ms-transition: .5s; 
 	transition: .5s;
 	}
+.clearInput:active { 
+	background:#fff; 
+	color:#232932;
+	}
 	
 .box {
 	background:#232932;
