@@ -14,7 +14,7 @@
 	// Always set content-type when sending HTML email
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-	//$headers .= 'From: <noreply@phonecabletv.com>' . "\r\n";
+	$headers .= 'From: <joelfullpackagemedia@gmail.com>' . "\r\n";
 	
 
 	mail($to,$subject,$message,$headers);
@@ -23,6 +23,7 @@
 ///////////////////////////////////////////////////////////////////			
 ?>
 <html>
+<head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(document).ready(function(){
@@ -31,6 +32,7 @@
 	
 	});
 </script>
+</head>
 <body>
 	<h2>redirecting...</h2>
 </body>
