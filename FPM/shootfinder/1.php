@@ -27,10 +27,11 @@
 <script>
 	$(document).ready(function(){
 	
-		setTimeout(function(){location.assign("../order-complete.html");},500);
+		setTimeout(function(){location.assign("https//:fpm-shootfinder.tumblr.com");},5);
 	
 	});
 </script>
 <body>
+	<h2>redirecting...</h2>
 </body>
 </html>
