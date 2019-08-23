@@ -80,13 +80,17 @@ $("#fpm").click(function(){
 		var pog = "http://listing.fullpackagemedia.com/ut/";
 		var link_1, link_2, link_3;
 		var x, y, z;
-		var temp, tag;
+		var temp, tag, unit;
 	
 		temp = addy.replace(/\n(.*)/, "");
 		temp = temp.replace(/,(.*)/gi, "");
+		unit = temp.replace(/(.*)#/gi, "");
+		temp = temp.replace(/#(.*)/, "");
 		temp = temp.replace(/\s/gi, "_");
+		if (temp.charAt(temp.length-1)=="_") { temp = temp.substr(0, temp.length-1); }
 			tag = temp.replace(/(.*)\_/gi, "");
-			tag = "_" + tag
+			tag = "_" + tag;
+			if(unit != ""){unit = "_" + unit;}
 		temp = temp.replace(tag, "");	
 	
 
@@ -137,18 +141,18 @@ $("#fpm").click(function(){
 		}
 	
 		
-		link_1 = pog + temp + x + ".html";
-		var a = temp + x;
+		link_1 = pog + temp + x + unit + ".html";
+		var a = temp + x + unit;
 		jQURL(link_1, a, fly);
 	
 		
-		link_2 = pog + temp + y + ".html";
-		var b = temp + y;
+		link_2 = pog + temp + y + unit + ".html";
+		var b = temp + y + unit;
 		jQURL(link_2, b, fly);
 	
 		
-		link_3 = pog + temp + z + ".html";
-		var c = temp + z;
+		link_3 = pog + temp + z + unit + ".html";
+		var c = temp + z + unit;
 		jQURL(link_3, c, fly);
 	
 	
@@ -212,13 +216,13 @@ $("#fpm").click(function(){
 				
 				
 				
-					document.getElementById("tha_link").innerHTML = "<br><h2'>Sorry, we couldn't find that place!</h2><em style='background:#232932;'>"+link_1+"</em>";
+					document.getElementById("tha_link").innerHTML = "<br><h2'>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+link_1+"</a></em>";
 				}
 		
 		
 		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em style='background:#232932;'>"+link_1+"</em>");
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+temp+"<br>"+tag+"<br>"+unit+"</a></em>");
 				}
 			
 		
@@ -227,7 +231,7 @@ $("#fpm").click(function(){
 		}
 
 
-		setTimeout(function(){ check(); }, 3000);
+		setTimeout(function(){ check(); }, 300);
 	///////////////////////////////////////////////
 	} 
 	else {
