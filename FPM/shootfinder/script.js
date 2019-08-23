@@ -212,17 +212,18 @@ $("#fpm").click(function(){
 				
 				
 				
-					document.getElementById("tha_link").innerHTML = "<br><h2>Sorry, we couldn't find that place!</h2><em>"+link_1+"</em>";
+					document.getElementById("tha_link").innerHTML = "<br><h2'>Sorry, we couldn't find that place!</h2><em style='background:#232932;'>"+link_1+"</em>";
 				}
 		
 		
 		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em>"+link_1+"</em>");
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em style='background:#232932;'>"+link_1+"</em>");
 				}
 			
 		
 			}
+			else { document.getElementById("tha_link").innerHTML = ""; }
 		}
 
 
