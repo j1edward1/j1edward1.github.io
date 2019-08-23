@@ -80,17 +80,22 @@ $("#fpm").click(function(){
 		var pog = "http://listing.fullpackagemedia.com/ut/";
 		var link_1, link_2, link_3;
 		var x, y, z;
-		var temp, tag, unit;
+		var temp, tag; 
+		var unit = "";
 	
 		temp = addy.replace(/\n(.*)/, "");
 		temp = temp.replace(/,(.*)/gi, "");
-		unit = temp.replace(/(.*)#/gi, "");
-		temp = temp.replace(/#(.*)/, "");
+		if(temp.match("#")) {
+			unit = temp.replace(/(.*)#/gi, "");
+			temp = temp.replace(/#(.*)/, "");
+		}
 		temp = temp.replace(/\s/gi, "_");
-		if (temp.charAt(temp.length-1)=="_") { temp = temp.substr(0, temp.length-1); }
-			tag = temp.replace(/(.*)\_/gi, "");
-			tag = "_" + tag;
-			if(unit != ""){unit = "_" + unit;}
+		if(temp.charAt(temp.length-1)=="_") 
+			{ temp = temp.substr(0, temp.length-1); }
+		tag = temp.replace(/(.*)\_/gi, "");
+		tag = "_" + tag;
+		if(unit != "")
+			{ unit = "_" + unit; }
 		temp = temp.replace(tag, "");	
 	
 
@@ -222,7 +227,7 @@ $("#fpm").click(function(){
 		
 		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+temp+"<br>"+tag+"<br>"+unit+"</a></em>");
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+link_1+"</a></em>");
 				}
 			
 		
