@@ -18,46 +18,8 @@ function save_search(html,url,addx) {
 	);
 	$('html, body').animate({ scrollTop: $(".wrapper").offset().top }, 1000);
 
-		//// Set Local Storage ////
-	// Check browser support
-	if (typeof(Storage) !== "undefined") {
-		var num = 0;
-		for (var i=1; i<21; ++i) {
-			var c = "shoot_search_" + String(i);
-			if (localStorage.getItem(c)) {
-				num = i+1;
-			} else { break; }
-		}
-	
-		var cname = "shoot_search_" + String(num);
-		localStorage.setItem(cname, save);
-	}
-		////	
-
 }
 
-//function prev_search() {
-//// Get Cookies Into Array////
-// Check browser support
-	if (typeof(Storage) !== "undefined") {
-		var ckie = new Array();
-		var num = 0;
-		var d = window.localStorage.length;
-		for (var i=0; i<d; ++i) {
-			var c = "shoot_search_" + String(i+1);
-			if (localStorage.getItem(c)) { ckie[i] = localStorage.getItem(c);
-			} else { break; }
-		}
-	
-		var a = ckie.length + 1;
-		var b = ckie.length - 19;
-		for (var i=a; i>b; --i) {
-			$("#boxes").append( 
-				ckie[i]
-			);
-		}	
-	}	
-//} 
 //////////////////////////////
 Object.size = function(obj) {
     var size = 0, key;
