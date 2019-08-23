@@ -32,7 +32,7 @@
 <script>
 	$(document).ready(function(){
 	
-		setTimeout(function(){location.assign("https://fpm-shootfinder.tumblr.com");},3000);
+		setTimeout(function(){location.assign("https://fpm-shootfinder.tumblr.com");},300);
 	
 	});
 </script>
