@@ -1,10 +1,4 @@
-addEventListener('load', function(e) {
-//	document.querySelector('h1').innerHTML = 'Enter Shoot Address';
-//	document.querySelector('title').innerHTML = 'Shoot Finder | Full Package Media';
-});
 /////////////////////////////
-
-
 function save_search(html,url,addx) {
 
 	var ht = JSON.stringify(html);
@@ -18,45 +12,52 @@ function save_search(html,url,addx) {
 	var save = '<div class="box"><a href="' + url + '" target="_blank"><img src="' + img + '" alt="not available" /><em class="addr">' + add +  '</em></a></div>';
 	
 	//
+	
 	$("#boxes").prepend( 
 		save
 	);
+	$('html, body').animate({ scrollTop: $(".wrapper").offset().top }, 1000);
+
+		//// Set Local Storage ////
+	// Check browser support
+	if (typeof(Storage) !== "undefined") {
+		var num = 0;
+		for (var i=1; i<21; ++i) {
+			var c = "shoot_search_" + String(i);
+			if (localStorage.getItem(c)) {
+				num = i+1;
+			} else { break; }
+		}
 	
-/*	//// Set Cookie ////
-	var num = 0;
-	for (var i=1; i<21; ++i) {
-		var c = "shoot_search_" + String(i);
-		if (checkCookie(c)) {
-			num = i+1;
-		} else { break; }
+		var cname = "shoot_search_" + String(num);
+		localStorage.setItem(cname, save);
 	}
-	
-	var cname = "shoot_search_" + String(num);
-	setCookie(cname, save, 50);
-	////	
-*/
+		////	
+
 }
-/*
+
 //function prev_search() {
 //// Get Cookies Into Array////
-	var ckie = new Array();
-	var num = 0;
-	var d = document.cookie.length;
-	for (var i=0; i<d; ++i) {
-		var c = "shoot_search_" + String(i+1);
-		if (checkCookie(c)) { ckie[i] = getCookie(c);
-		} else { break; }
-	}
+// Check browser support
+	if (typeof(Storage) !== "undefined") {
+		var ckie = new Array();
+		var num = 0;
+		var d = window.localStorage.length;
+		for (var i=0; i<d; ++i) {
+			var c = "shoot_search_" + String(i+1);
+			if (localStorage.getItem(c)) { ckie[i] = localStorage.getItem(c);
+			} else { break; }
+		}
 	
-	var a = ckie.length + 1;
-	var b = ckie.length - 19;
-	for (var i=a; i>b; --i) {
-		$("#boxes").append( 
-			ckie[i]
-		);
+		var a = ckie.length + 1;
+		var b = ckie.length - 19;
+		for (var i=a; i>b; --i) {
+			$("#boxes").append( 
+				ckie[i]
+			);
+		}	
 	}	
-	
-//} */
+//} 
 //////////////////////////////
 Object.size = function(obj) {
     var size = 0, key;
@@ -66,7 +67,7 @@ Object.size = function(obj) {
     return size;
 };
    
-function jQURL(url, addx) {
+function jQURL(url, addx, fly) {
 	$.ajax({
 		url: url
 	})
@@ -77,7 +78,7 @@ function jQURL(url, addx) {
 			document.getElementById("tha_link").innerHTML = "<span></span>";
 
 			save_search(html,url,addx);
-			//window.open(url, '_blank');
+			if(fly){window.open(url, '_blank');}
 		}
 	});
 }
@@ -89,18 +90,29 @@ function DOB(url, addx) {
 	.done(function(html) {
 		var ln = Object.size(html);
 		if (ln == 0) { dosX = "X"; } else { window.open(url, '_blank'); }
-/*		$("#tha_link").append( 
+		$("#tha_link").append( 
 			"<br><br>"+ dosX +"    <a href='"+ url +"'>"+ addx +"</a>"
 		);
-*/
+
 	});
 }
 
+function capital_letter(str) {
+    str = str.split(" ");
+
+    for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
+}
 	
 /////////////////////////////
 $("#fpm").click(function(){
-
+	
+	var fly = document.getElementById("fly").checked;
 	var addy = document.getElementById("addy").value;
+		addy = capital_letter(addy);
 	
 	if (addy != '' && addy != '123 ABC Lane') {
 		var pog = "http://listing.fullpackagemedia.com/ut/";
@@ -129,6 +141,12 @@ $("#fpm").click(function(){
 			case "_Lane":
 			case "_Ln":
 				x = "_Lane";	y = "_Ln";	z = "";	break;
+			case "_Place":
+			case "_Pl":
+				x = "_Place";	y = "_Pl";	z = "";	break;
+			case "_Boulevard":
+			case "_Blvd":
+				x = "_Boulevard";	y = "_Blvd";	z = "";	break;
 			case "_Court":
 			case "_Ct":
 				x = "_Court";	y = "_Ct";	z = "";	break;
@@ -159,20 +177,18 @@ $("#fpm").click(function(){
 		
 		link_1 = pog + temp + x + ".html";
 		var a = temp + x;
-		jQURL(link_1, a);
+		jQURL(link_1, a, fly);
 	
 		
 		link_2 = pog + temp + y + ".html";
 		var b = temp + y;
-		jQURL(link_2, b);
+		jQURL(link_2, b, fly);
 	
 		
 		link_3 = pog + temp + z + ".html";
 		var c = temp + z;
-		jQURL(link_3, c);
+		jQURL(link_3, c, fly);
 	
-
-	//	$("#em").append(addy);
 	
 	
 	
@@ -234,13 +250,13 @@ $("#fpm").click(function(){
 				
 				
 				
-					document.getElementById("tha_link").innerHTML = "<br><h2>Sorry, we couldn't find that place!</h2>";
+					document.getElementById("tha_link").innerHTML = "<br><h2>Sorry, we couldn't find that place!</h2><em>"+link_1+"</em>";
 				}
 		
 		
 		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>");
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em>"+link_1+"</em>");
 				}
 			
 		

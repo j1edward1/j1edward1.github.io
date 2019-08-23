@@ -62,8 +62,7 @@ h2 { color:#fff; }
 hr { border:1px dotted #7a8ba3; width:80%; }
 
 
-
-
+	
 
 #wrapper {
 	background: linear-gradient(to bottom , rgba(35, 41, 50, 0) , rgba(35, 41, 50, 1) );
@@ -82,7 +81,7 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	z-index:1;
 	
 	padding:75px 0px;
-	overflow:scroll;
+	overflow-y:scroll;
 	}
 	
 	
