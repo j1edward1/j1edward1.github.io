@@ -189,7 +189,18 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	margin:5px;
 	padding:5px;
 	}
-
+#closeForm {
+	background:transparent;
+	max-height:25px;
+	padding:0px;
+	margin:0px;
+	position:relative;
+	right:-250px;
+	top:10px;
+	cursor:pointer;
+	display:inline-block;
+	z-index:1000;
+	}
 #formBox {
 	opacity:0.9;
 	background:#fff;
@@ -197,13 +208,15 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	font-size:25px;
 	border: 2px dotted #232932;
 	border-radius:15px;
-	min-width:200px;
-	min-height:250px;
-	padding:15px;
+	min-width:275px;
+	max-width:275px;
+	min-height:300px;
+	max-height:300px;
+	padding:0px;
 	position:fixed;
 	right:-100vw;
 	bottom:70px;
-	overflow:scroll;
+	overflow:visible;
 	z-index:999;
 	
 	-webkit-transition: .25s; 
@@ -224,7 +237,7 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	padding:10px 0px 0px 0px;
 	margin:0px;
 	position:absolute;
-	bottom:70px;
+	top:-85px;
 	right:20px;
 	cursor:pointer;
 	z-index:998;
@@ -242,6 +255,19 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	-o-transition: .25s; 
 	-ms-transition: .25s; 
 	transition: .25s;
+	}
+#myFrame {
+	background:transparent;
+	border-radius:15px;
+	min-width:271px;
+	max-width:271px;
+	min-height:296px;
+	max-height:296px;
+	padding:0px;
+	margin:0px;
+	position:relative;
+	top:-18px;
+	overflow:visible;
 	}
 footer {
 	height:50px;

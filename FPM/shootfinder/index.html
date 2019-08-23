@@ -17,8 +17,8 @@
 	<link rel="shortcut icon" href="https://fullpackagemedia.com/wp-content/uploads/2017/10/Logo-Web-FullPAckageMedia.png" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fullpackagemedia.com/wp-content/cache/min/1/5deeed07ab355556ed67cdf2fa89278c.css" data-minify="1" />
-	<link rel="stylesheet" href="https://j1edward1.github.io/FPM/shootfinder/style.css" />
-	<!--link rel="stylesheet" href="style.css" /-->
+	<!--link rel="stylesheet" href="https://j1edward1.github.io/FPM/shootfinder/style.css" /-->
+	<link rel="stylesheet" href="style.css" />
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 	<style type="text/css">
@@ -116,15 +116,9 @@
 		
 				</div><!--wrapper-->
 				
-			
-				<form id="formBox" action="https://j1edward1.github.io/FPM/shootfinder/1.php" method="POST" name="Shoot Finder Feedback" accept-charset="utf-8">
-					<h3 style="display:inline-block;">Feedback</h3>
-					<h4 id="closeForm" style="display:inline-block;float:right;cursor:pointer;">X</h4>
-					<br>
-					<span style="font-size:15px;">Notice any bugs with the Shoot Finder?</span>
-					<hr style="width:330px;border:1px solid #7a8ba3;"/>
-					<input type="text" id="fbText" name="Feedback Message Box" style="border:1px solid #232932;"/><br>
-					<input type="submit" class="clearInput" name="submit" value="Submit" />
+				<div id="formBox">
+					<h4 id="closeForm">X</h4>
+					<iframe id="myFrame" src="https://jedbase.azurewebsites.net/feedbackform.html"></iframe>
 				</div>
 			
 		
@@ -146,7 +140,6 @@ $(document).ready(function(){
 		$("#fpm-logo").css("width",65);
 		$("#fpm-logo").css("top",10);
 		$("#fpm-logo").css("left",10);
-		$("#comment").css("bottom", 150);
 		$(".et-social-icons").css("display", "none");
 		$(".et-social-icons-footer").css("display", "inline-block");
 	}
@@ -157,14 +150,12 @@ $(document).ready(function(){
 			$("#fpm-logo").css("width",65);
 			$("#fpm-logo").css("top",10);
 			$("#fpm-logo").css("left",10);
-			$("#comment").css("bottom", 150);
 			$(".et-social-icons").css("display", "none");
 			$(".et-social-icons-footer").css("display", "inline-block");
 		} else {
 			$("#fpm-logo").css("width",125);
 			$("#fpm-logo").css("top",20);
 			$("#fpm-logo").css("left",20);
-			$("#comment").css("bottom", 70);
 			$(".et-social-icons").css("display", "inline-block");
 			$(".et-social-icons-footer").css("display", "none");
 			
@@ -193,6 +184,9 @@ $(document).ready(function(){
 		//$("#formBox").css("opacity", "0");
 		$("#formBox").css("right", "-100vw");
 	});
+	$("#myFrame").on("load", function () {
+		$("#formBox").css("right", "-100vw");
+	})
 	
 });
 </script>
