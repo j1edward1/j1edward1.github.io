@@ -16,7 +16,7 @@ function save_search(html,url,addx) {
 	$("#boxes").prepend( 
 		save
 	);
-	$('html, body').animate({ scrollTop: $(".wrapper").offset().top }, 1000);
+	$('#wrapper').animate({ scrollTop: 4999 }, 1000);
 
 }
 

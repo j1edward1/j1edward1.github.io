@@ -33,9 +33,7 @@ header img, header ul{
 	position:fixed;
 	left:40px;
 	top:160px;
-	}
-	
-	
+	}	
 .et-social-icons-footer {
 	position:relative;
 	top:20px;
@@ -57,7 +55,7 @@ header img, header ul{
 	}
 	
 
-h1 { font-size: 40px; font-weight:900; color:#232932; }
+h1 { font-size: 40px; font-weight:900; color:#fff; text-shadow: 2px 2px 2px #232932; }
 h2 { color:#fff; }
 hr { border:1px dotted #7a8ba3; width:80%; }
 
@@ -94,7 +92,7 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	outline:none;
 	display:inline-block;
 	}
-#addy {  
+#addy, #fbText {  
 	background:#fff; 
 	color:#aeaeae; 
 	border:0px solid #aaa; 
@@ -137,7 +135,21 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	background:#fff; 
 	color:#232932;
 	}
-	
+#flyToggle {
+	background:#232932;
+	color:#fff; 
+	border:0px solid #aaa; 
+	border-radius:25px; 
+	text-align:center;
+	font-size:30px;
+	width:45px;
+	padding:0px; 
+	margin:0px;
+	cursor:pointer; 
+	position:relative;
+	bottom:-5px;
+	z-index:99;
+	}
 .box {
 	background:#232932;
 	color:#fff; 
@@ -178,9 +190,59 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	padding:5px;
 	}
 
-
-
-
+#formBox {
+	opacity:0.9;
+	background:#fff;
+	color:#232932;
+	font-size:25px;
+	border: 2px dotted #232932;
+	border-radius:15px;
+	min-width:300px;
+	min-height:300px;
+	padding:15px;
+	position:fixed;
+	right:-100vw;
+	bottom:30px;
+	overflow:scroll;
+	z-index:999;
+	
+	-webkit-transition: .25s; 
+	-moz-transition: .25s; 
+	-o-transition: .25s; 
+	-ms-transition: .25s; 
+	transition: .25s;
+	}
+#comment {
+	opacity:0.3;
+	background:#232932;
+	color:#fff;
+	border:2px dotted #fff;
+	border-radius:50px;
+	text-align:center;
+	width:80px;
+	height:80px;
+	padding:15px 0px 0px 0px;
+	margin:0px;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	cursor:pointer;
+	z-index:998;
+	}
+#comment i {
+	font-size:20px;
+	padding:0px;
+	margin:auto;
+	}
+#comment:hover {
+	opacity:1;
+	
+	-webkit-transition: .25s; 
+	-moz-transition: .25s; 
+	-o-transition: .25s; 
+	-ms-transition: .25s; 
+	transition: .25s;
+	}
 footer {
 	height:50px;
 	width:100%;
