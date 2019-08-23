@@ -27,7 +27,7 @@
 <script>
 	$(document).ready(function(){
 	
-		setTimeout(function(){location.assign("https//:fpm-shootfinder.tumblr.com");},5);
+		setTimeout(function(){location.assign("https://fpm-shootfinder.tumblr.com");},5);
 	
 	});
 </script>

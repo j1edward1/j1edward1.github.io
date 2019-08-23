@@ -197,12 +197,12 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	font-size:25px;
 	border: 2px dotted #232932;
 	border-radius:15px;
-	min-width:300px;
-	min-height:300px;
+	min-width:250px;
+	min-height:250px;
 	padding:15px;
 	position:fixed;
 	right:-100vw;
-	bottom:30px;
+	bottom:20px;
 	overflow:scroll;
 	z-index:999;
 	
@@ -219,13 +219,13 @@ hr { border:1px dotted #7a8ba3; width:80%; }
 	border:2px dotted #fff;
 	border-radius:50px;
 	text-align:center;
-	width:80px;
-	height:80px;
-	padding:15px 0px 0px 0px;
+	width:65px;
+	height:65px;
+	padding:10px 0px 0px 0px;
 	margin:0px;
-	position:fixed;
-	bottom:30px;
-	right:30px;
+	position:absolute;
+	bottom:70px;
+	right:20px;
 	cursor:pointer;
 	z-index:998;
 	}
