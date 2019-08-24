@@ -236,7 +236,7 @@ $("#fpm").click(function(){
 		}
 
 
-		setTimeout(function(){ check(); }, 3000);
+		setTimeout(function(){ check(); }, 3500);
 	///////////////////////////////////////////////
 	} 
 	else {
