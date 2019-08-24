@@ -1,3 +1,4 @@
+var checkr;
 /////////////////////////////
 function save_search(html,url,addx) {
 
@@ -38,7 +39,8 @@ function jQURL(url, addx, fly) {
 		if (ln > 1) { 
 			dosX = "✓"; 
 			document.getElementById("tha_link").innerHTML = "<span></span>";
-
+			clearTimeout(checkr);
+			
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 		}
@@ -90,6 +92,7 @@ $("#fpm").click(function(){
 			temp = temp.replace(/#(.*)/, "");
 		}
 		temp = temp.replace(/\s/gi, "_");
+		temp = temp.replace(/\./gi, "");
 		if(temp.charAt(temp.length-1)=="_") 
 			{ temp = temp.substr(0, temp.length-1); }
 		tag = temp.replace(/(.*)\_/gi, "");
@@ -141,7 +144,7 @@ $("#fpm").click(function(){
 				x = "_Way";	y = "_Wy";	z = "";	break;
 			default:
 				x = tag;
-				y = tag;
+				y = "";
 				z = "";
 		}
 	
@@ -165,13 +168,23 @@ $("#fpm").click(function(){
 	
 	
 	//////// IF NONE OF THOSE LINKS WORKED /////////
+		var firstCheck = false;
 		function check() {
 			var tha_link = document.getElementById("tha_link").innerHTML;
-			if (tha_link == "") {
+			//if (tha_link == "") {
 	
 				
 				var t, u, v;	
-				if (nesw = temp.match(/(_N_|_N._|_North_|_E_|_E._|_East_|_S_|_S._|_South_|_W_|_W._|_West_)/i)) {	
+				
+				
+				if (unit != "" && !firstCheck) {
+					link_1 = pog + temp + tag + ".html";
+					var a = temp + tag;
+					jQURL(link_1, a, fly);
+					firstCheck = true;
+					checkr = setTimeout(function(){ check(); }, 2000);
+					
+				} else if (nesw = temp.match(/(_N_|_N._|_North_|_E_|_E._|_East_|_S_|_S._|_South_|_W_|_W._|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
 				
 					//alert(nesw[0] +"   ||   "+ temp);
@@ -220,23 +233,23 @@ $("#fpm").click(function(){
 					DOB(pog + temp + z + ".html", temp + z);
 				
 				
-				
-					document.getElementById("tha_link").innerHTML = "<br><h2'>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+link_1+"</a></em>";
+					var link_n = pog + temp + tag + unit + ".html"; 
+					document.getElementById("tha_link").innerHTML = "<br><h2'>Sorry, we couldn't find that place!</h2>Try this: <em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>";
 				}
 		
 		
 		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2><em><a href='"+link_1+"' style='background:#232932;color:#7a8ba3;'>"+link_1+"</a></em>");
+					var link_n = pog + temp + tag + unit + ".html";
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>Try this: <em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
 				}
 			
 		
-			}
-			else { document.getElementById("tha_link").innerHTML = ""; }
+		//	} else { document.getElementById("tha_link").innerHTML = ""; }
 		}
 
 
-		setTimeout(function(){ check(); }, 3500);
+		checkr = setTimeout(function(){ check(); }, 3500);
 	///////////////////////////////////////////////
 	} 
 	else {
