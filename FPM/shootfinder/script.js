@@ -87,7 +87,7 @@ $("#fpm").click(function(){
 	
 		temp = addy.replace(/\n(.*)/, "");
 		temp = temp.replace(/,(.*)/gi, "");
-		if(temp.match("#")) {
+		if(temp.match("#")) { //grab apt #123 and cut it off from temp
 			unit = temp.replace(/(.*)#/gi, "");
 			temp = temp.replace(/#(.*)/, "");
 		}
@@ -97,10 +97,10 @@ $("#fpm").click(function(){
 			{ temp = temp.substr(0, temp.length-1); }
 		tag = temp.replace(/(.*)\_/gi, "");
 		tag = "_" + tag;
+		temp = temp.replace(new RegExp(tag + '$'), "");
 		if(unit != "")
-			{ unit = "_" + unit; }
-		temp = temp.replace(tag, "");	
-	
+			{ unit = "_" + unit; }	
+			
 
 		switch(tag) {
 			case "_Avenue":
