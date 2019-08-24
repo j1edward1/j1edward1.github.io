@@ -182,7 +182,7 @@ $("#fpm").click(function(){
 					var a = temp + tag;
 					jQURL(link_1, a, fly);
 					firstCheck = true;
-					checkr = setTimeout(function(){ check(); }, 2000);
+					checkr = setTimeout(function(){ check(); }, 1000);
 					
 				} else if (nesw = temp.match(/(_N_|_N._|_North_|_E_|_E._|_East_|_S_|_S._|_South_|_W_|_W._|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
@@ -249,7 +249,7 @@ $("#fpm").click(function(){
 		}
 
 
-		checkr = setTimeout(function(){ check(); }, 3500);
+		checkr = setTimeout(function(){ check(); }, 2000);
 	///////////////////////////////////////////////
 	} 
 	else {
