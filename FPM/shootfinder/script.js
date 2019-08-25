@@ -251,7 +251,7 @@ $("#fpm").click(function(){
 		}
 
 
-		checkr = setTimeout(function(){ check(); }, 2000);
+		checkr = setTimeout(function(){ check(); }, 3500);
 	///////////////////////////////////////////////
 	} 
 	else {
