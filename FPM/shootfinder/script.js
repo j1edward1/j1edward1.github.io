@@ -240,8 +240,11 @@ $("#fpm").click(function(){
 		
 		
 				else {
-					var link_n = pog + temp + tag + unit + ".html";
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>Try this: <em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>We tried: <em>"
+						+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a>"
+						+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a>"
+						+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a>"
+						+ "</em>");
 				}
 			
 		
