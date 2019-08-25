@@ -75,9 +75,11 @@ $("#fpm").click(function(){
 	
 	var fly = document.getElementById("fly").checked;
 	var addy = document.getElementById("addy").value;
+		addy = addy.trim();
+		addy = addy.replace(/(\s\s*)/gi, " ");
 		addy = capital_letter(addy);
 	
-	if (addy != '' && addy != '123 ABC Lane') {
+	if (addy !== '' && addy !== '123 ABC Lane') {
 		var pog = "http://listing.fullpackagemedia.com/ut/";
 		var link_1, link_2, link_3;
 		var x, y, z;
@@ -248,10 +250,10 @@ $("#fpm").click(function(){
 			
 		
 		//	} else { document.getElementById("tha_link").innerHTML = ""; }
-		}
+		} //function check END//
 
 
-		checkr = setTimeout(function(){ check(); }, 3500);
+		checkr = setTimeout(function(){ check(); }, 2000);
 	///////////////////////////////////////////////
 	} 
 	else {
