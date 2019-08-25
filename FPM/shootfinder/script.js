@@ -243,8 +243,7 @@ $("#fpm").click(function(){
 					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>We tried: <em>"
 						+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
 						+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
-						+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a>"
-						+ "</em>");
+						+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a></em>");
 				}
 			
 		
