@@ -1,3 +1,4 @@
+var checkr, testNum;
 /////////////////////////////
 function save_search(html,url,addx) {
 
@@ -29,7 +30,7 @@ Object.size = function(obj) {
     return size;
 };
    
-function jQURL(url, addx, fly) {
+function jQURL(url, addx, fly, tNum) {
 	$.ajax({
 		url: url
 	})
@@ -37,12 +38,14 @@ function jQURL(url, addx, fly) {
 		var ln = Object.size(html);
 		if (ln > 1) { 
 			document.getElementById("tha_link").innerHTML = "<span></span>";
+			clearTimeout(checkr);
 			
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 			return true;
 		}
 	});
+	testNum = tNum;
 	return false;
 }
 
@@ -60,6 +63,7 @@ function DOB(url, addx, fly) {
 			);
 		} 
 		else { 
+			//dosX = "<strong style='font-size:25px'>✓</strong>"; 
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 			document.getElementById("tha_link").innerHTML = "<span></span>";
@@ -163,17 +167,17 @@ $("#fpm").click(function(){
 		
 		link_1 = pog + temp + x + ".html";
 		var a = temp + x;
-		var shootFound = jQURL(link_1, a, fly);
+		var shootFound = jQURL(link_1, a, fly, 1);
 	
-		if (!shootFound) {
+		if (!shootFound && testNum == 1) {
 			link_2 = pog + temp + y + ".html";
 			var b = temp + y;
-			shootFound = jQURL(link_2, b, fly);
+			shootFound = jQURL(link_2, b, fly, 2);
 		} 
-		if (!shootFound) {
+		if (!shootFound && testNum == 2) {
 			link_3 = pog + temp + z + ".html";
 			var c = temp + z;
-			shootFound = jQURL(link_3, c, fly);
+			shootFound = jQURL(link_3, c, fly, 3);
 		}
 	
 	
@@ -183,6 +187,7 @@ $("#fpm").click(function(){
 		var firstCheck = false;
 		function check() {
 			var tha_link = document.getElementById("tha_link").innerHTML;
+			//if (tha_link == "") {
 	
 				
 				var t, u, v;	
@@ -191,13 +196,14 @@ $("#fpm").click(function(){
 				if (unit != "" && !firstCheck) {
 					link_1 = pog + temp + tag + ".html";
 					var a = temp + tag;
-					shootFound = jQURL(link_1, a, fly);
+					jQURL(link_1, a, fly, 0);
 					firstCheck = true;
-					if (!shootFound) { check(); }
+					checkr = setTimeout(function(){ check(); }, 1000);
 					
 				} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
 				
+					//alert(nesw[0] +"   ||   "+ temp);
 
 		
 					switch(nesw[0]) {			
@@ -234,7 +240,13 @@ $("#fpm").click(function(){
 					DOB(pog + temp + z + ".html", temp + z, fly);
 				
 				
+					//var link_n = pog + temp + tag + unit + ".html"; 
+					//document.getElementById("tha_link").innerHTML = 
+					//$("#tha_link").append("<br><h2>Sorry, we couldn't find that place!</h2>Maybe this'll work: <br><em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
 				}
+		
+		
+		
 				else {
 					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
 						+ "<strong style='background:#232932;color:#7a8ba3;'>We tried:</strong><br><em>"
@@ -244,10 +256,11 @@ $("#fpm").click(function(){
 				}
 			
 		
+		//	} else { document.getElementById("tha_link").innerHTML = ""; }
 		} //function check END//
 
 
-		if (!shootFound) { check(); }
+		if (!shootFound && testNum == 3) { checkr = setTimeout(function(){ check(); }, 500); }
 	///////////////////////////////////////////////
 	} 
 	else {
