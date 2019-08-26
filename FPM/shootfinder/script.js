@@ -46,17 +46,25 @@ function jQURL(url, addx, fly) {
 	});
 }
 
-function DOB(url, addx) {
+function DOB(url, addx, fly) {
 	$.ajax({
 		url: url
 	})
 	.done(function(html) {
 		var ln = Object.size(html);
-		if (ln == 0) { dosX = "X"; } else { window.open(url, '_blank'); }
-		$("#tha_link").append( 
-			"<br><br>"+ dosX +"    <a href='"+ url +"'>"+ addx +"</a>"
-		);
-
+		if (ln == 0) { 
+			dosX = "X"; 
+			$("#tha_link").append( 
+				"<br><br><span  style='background:#232932;color:#7a8ba3;'>"+ dosX 
+				+"    <a href='"+ url +"' target='_blank'>"+ addx +"</a></span>"
+			);
+		} 
+		else { 
+			//dosX = "<strong style='font-size:25px'>✓</strong>"; 
+			save_search(html,url,addx);
+			if(fly){window.open(url, '_blank');}
+			document.getElementById("tha_link").innerHTML = "<span></span>";
+		}
 	});
 }
 
@@ -76,6 +84,7 @@ $("#fpm").click(function(){
 	var fly = document.getElementById("fly").checked;
 	var addy = document.getElementById("addy").value;
 		addy = addy.trim();
+		addy = addy.replace(/\n(.*)/, "");
 		addy = addy.replace(/(\s\s*)/gi, " ");
 		addy = capital_letter(addy);
 	
@@ -86,8 +95,7 @@ $("#fpm").click(function(){
 		var temp, tag; 
 		var unit = "";
 	
-		temp = addy.replace(/\n(.*)/, "");
-		temp = temp.replace(/,(.*)/gi, "");
+		temp = addy.replace(/,(.*)/gi, "");
 		if(temp.match("#")) { //grab apt #123 and cut it off from temp
 			unit = temp.replace(/(.*)#/gi, "");
 			temp = temp.replace(/#(.*)/, "");
@@ -149,19 +157,23 @@ $("#fpm").click(function(){
 				z = "";
 		}
 	
+		x += unit;
+		y += unit;
+		z += unit;
+	
 		
-		link_1 = pog + temp + x + unit + ".html";
-		var a = temp + x + unit;
+		link_1 = pog + temp + x + ".html";
+		var a = temp + x;
 		jQURL(link_1, a, fly);
 	
 		
-		link_2 = pog + temp + y + unit + ".html";
-		var b = temp + y + unit;
+		link_2 = pog + temp + y + ".html";
+		var b = temp + y;
 		jQURL(link_2, b, fly);
 	
 		
-		link_3 = pog + temp + z + unit + ".html";
-		var c = temp + z + unit;
+		link_3 = pog + temp + z + ".html";
+		var c = temp + z;
 		jQURL(link_3, c, fly);
 	
 	
@@ -177,7 +189,7 @@ $("#fpm").click(function(){
 				
 				var t, u, v;	
 				
-				
+				// if it didn't pass with the unit, check without the unit, otherwise check for NESW
 				if (unit != "" && !firstCheck) {
 					link_1 = pog + temp + tag + ".html";
 					var a = temp + tag;
@@ -185,58 +197,49 @@ $("#fpm").click(function(){
 					firstCheck = true;
 					checkr = setTimeout(function(){ check(); }, 1000);
 					
-				} else if (nesw = temp.match(/(_N_|_N._|_North_|_E_|_E._|_East_|_S_|_S._|_South_|_W_|_W._|_West_)/i)) {	
+				} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
 				
 					//alert(nesw[0] +"   ||   "+ temp);
 
 		
 					switch(nesw[0]) {			
-						case "_N_":			
-						case "_N._":			
+						case "_N_":				
 						case "_North_":
-							t = "_";	u = "_N_";	v = "_N._";	w = "_North_";	break;
+							t = "_";	u = "_N_";	v = "_North_";	break;
 						case "_E_":
-						case "_E._":
 						case "_East_":
-							t = "_";	u = "_E_";	v = "_E._";	w = "_East_";	break;
+							t = "_";	u = "_E_";	v = "_East_";	break;
 						case "_S_":
-						case "_S._":
 						case "_South_":
-							t = "_";	u = "_S_";	v = "_S._";	w = "_South_";	break;
+							t = "_";	u = "_S_";	v = "_South_";	break;
 						case "_W_":
-						case "_W._":
 						case "_West_":
-							t = "_";	u = "_W_";	v = "_W._";	w = "_West_";	break;
+							t = "_";	u = "_W_";	v = "_West_";	break;
 						default:
-							t = "_";	u = nesw[0];	u = nesw[0];	w = "_";
+							t = "_";	u = nesw[0];	v = "_";
 					}
 	
 	
 					temp = temp.replace("***", t);
-					DOB(pog + temp + x + ".html", temp + x);
-					DOB(pog + temp + y + ".html", temp + y);
-					DOB(pog + temp + z + ".html", temp + z);
+					DOB(pog + temp + x + ".html", temp + x, fly);
+					DOB(pog + temp + y + ".html", temp + y, fly);
+					DOB(pog + temp + z + ".html", temp + z, fly);
 	
 					temp = temp.replace(t, u);
-					DOB(pog + temp + x + ".html", temp + x);
-					DOB(pog + temp + y + ".html", temp + y);
-					DOB(pog + temp + z + ".html", temp + z);
+					DOB(pog + temp + x + ".html", temp + x, fly);
+					DOB(pog + temp + y + ".html", temp + y, fly);
+					DOB(pog + temp + z + ".html", temp + z, fly);
 	
 					temp = temp.replace(u, v);
-					DOB(pog + temp + x + ".html", temp + x);
-					DOB(pog + temp + y + ".html", temp + y);
-					DOB(pog + temp + z + ".html", temp + z);
-	
-					temp = temp.replace(v, w);
-					DOB(pog + temp + x + ".html", temp + x);
-					DOB(pog + temp + y + ".html", temp + y);
-					DOB(pog + temp + z + ".html", temp + z);
+					DOB(pog + temp + x + ".html", temp + x, fly);
+					DOB(pog + temp + y + ".html", temp + y, fly);
+					DOB(pog + temp + z + ".html", temp + z, fly);
 				
 				
-					var link_n = pog + temp + tag + unit + ".html"; 
+					//var link_n = pog + temp + tag + unit + ".html"; 
 					//document.getElementById("tha_link").innerHTML = 
-					$("#tha_link").append("<br><h2>Sorry, we couldn't find that place!</h2>Maybe this'll work: <em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
+					//$("#tha_link").append("<br><h2>Sorry, we couldn't find that place!</h2>Maybe this'll work: <br><em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
 				}
 		
 		
