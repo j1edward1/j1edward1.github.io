@@ -1,4 +1,3 @@
-var checkr;
 /////////////////////////////
 function save_search(html,url,addx) {
 
@@ -38,12 +37,13 @@ function jQURL(url, addx, fly) {
 		var ln = Object.size(html);
 		if (ln > 1) { 
 			document.getElementById("tha_link").innerHTML = "<span></span>";
-			clearTimeout(checkr);
 			
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
+			return true;
 		}
 	});
+	return false;
 }
 
 function DOB(url, addx, fly) {
@@ -60,7 +60,6 @@ function DOB(url, addx, fly) {
 			);
 		} 
 		else { 
-			//dosX = "<strong style='font-size:25px'>✓</strong>"; 
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 			document.getElementById("tha_link").innerHTML = "<span></span>";
@@ -164,18 +163,18 @@ $("#fpm").click(function(){
 		
 		link_1 = pog + temp + x + ".html";
 		var a = temp + x;
-		jQURL(link_1, a, fly);
+		var shootFound = jQURL(link_1, a, fly);
 	
-		
-		link_2 = pog + temp + y + ".html";
-		var b = temp + y;
-		jQURL(link_2, b, fly);
-	
-		
-		link_3 = pog + temp + z + ".html";
-		var c = temp + z;
-		jQURL(link_3, c, fly);
-	
+		if (!shootFound) {
+			link_2 = pog + temp + y + ".html";
+			var b = temp + y;
+			shootFound = jQURL(link_2, b, fly);
+		} 
+		if (!shootFound) {
+			link_3 = pog + temp + z + ".html";
+			var c = temp + z;
+			shootFound = jQURL(link_3, c, fly);
+		}
 	
 	
 	
@@ -184,7 +183,6 @@ $("#fpm").click(function(){
 		var firstCheck = false;
 		function check() {
 			var tha_link = document.getElementById("tha_link").innerHTML;
-			//if (tha_link == "") {
 	
 				
 				var t, u, v;	
@@ -193,14 +191,13 @@ $("#fpm").click(function(){
 				if (unit != "" && !firstCheck) {
 					link_1 = pog + temp + tag + ".html";
 					var a = temp + tag;
-					jQURL(link_1, a, fly);
+					shootFound = jQURL(link_1, a, fly);
 					firstCheck = true;
-					checkr = setTimeout(function(){ check(); }, 1000);
+					if (!shootFound) { check(); }
 					
 				} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
 				
-					//alert(nesw[0] +"   ||   "+ temp);
 
 		
 					switch(nesw[0]) {			
@@ -237,26 +234,20 @@ $("#fpm").click(function(){
 					DOB(pog + temp + z + ".html", temp + z, fly);
 				
 				
-					//var link_n = pog + temp + tag + unit + ".html"; 
-					//document.getElementById("tha_link").innerHTML = 
-					//$("#tha_link").append("<br><h2>Sorry, we couldn't find that place!</h2>Maybe this'll work: <br><em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
 				}
-		
-		
-		
 				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>We tried: <br><em>"
+					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
+						+ "<strong style='background:#232932;color:#7a8ba3;'>We tried:</strong><br><em>"
 						+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
 						+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
 						+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a></em>");
 				}
 			
 		
-		//	} else { document.getElementById("tha_link").innerHTML = ""; }
 		} //function check END//
 
 
-		checkr = setTimeout(function(){ check(); }, 2000);
+		if (!shootFound) { check(); }
 	///////////////////////////////////////////////
 	} 
 	else {
