@@ -12,7 +12,6 @@ function save_search(html,url,addx) {
 	var add = addx.replace(/_/g, " ");
 	var save = '<div class="box"><a href="' + url + '" target="_blank"><img src="' + img + '" alt="not available" /><em class="addr">' + add +  '</em></a></div>';
 	
-	//
 	
 	$("#boxes").prepend( 
 		save
@@ -63,7 +62,6 @@ function DOB(url, addx, fly) {
 			);
 		} 
 		else { 
-			//dosX = "<strong style='font-size:25px'>✓</strong>"; 
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 			document.getElementById("tha_link").innerHTML = "<span></span>";
@@ -187,8 +185,7 @@ $("#fpm").click(function(){
 		var firstCheck = false;
 		function check() {
 			var tha_link = document.getElementById("tha_link").innerHTML;
-			//if (tha_link == "") {
-	
+			
 				
 				var t, u, v;	
 				
@@ -203,7 +200,6 @@ $("#fpm").click(function(){
 				} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
 					temp = temp.replace(nesw[0], "***");
 				
-					//alert(nesw[0] +"   ||   "+ temp);
 
 		
 					switch(nesw[0]) {			
@@ -240,9 +236,6 @@ $("#fpm").click(function(){
 					DOB(pog + temp + z + ".html", temp + z, fly);
 				
 				
-					//var link_n = pog + temp + tag + unit + ".html"; 
-					//document.getElementById("tha_link").innerHTML = 
-					//$("#tha_link").append("<br><h2>Sorry, we couldn't find that place!</h2>Maybe this'll work: <br><em><a href='"+link_n+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_n+"</a></em>");
 				}
 		
 		
@@ -256,7 +249,6 @@ $("#fpm").click(function(){
 				}
 			
 		
-		//	} else { document.getElementById("tha_link").innerHTML = ""; }
 		} //function check END//
 
 
