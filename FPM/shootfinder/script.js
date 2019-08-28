@@ -12,6 +12,7 @@ function save_search(html,url,addx) {
 	var add = addx.replace(/_/g, " ");
 	var save = '<div class="box"><a href="' + url + '" target="_blank"><img src="' + img + '" alt="not available" /><em class="addr">' + add +  '</em></a></div>';
 	
+	//
 	
 	$("#boxes").prepend( 
 		save
@@ -62,6 +63,7 @@ function DOB(url, addx, fly) {
 			);
 		} 
 		else { 
+			//dosX = "<strong style='font-size:25px'>✓</strong>"; 
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
 			document.getElementById("tha_link").innerHTML = "<span></span>";
@@ -185,74 +187,66 @@ $("#fpm").click(function(){
 		var firstCheck = false;
 		function check() {
 			var tha_link = document.getElementById("tha_link").innerHTML;
+			var t, u, v;	
 			
+			// if it didn't pass with the unit, check without the unit, otherwise check for NESW
+			if (unit != "" && !firstCheck) {
+				link_1 = pog + temp + tag + ".html";
+				var a = temp + tag;
+				shootFound = jQURL(link_1, a, fly, 0);
+				firstCheck = true;
 				
-				var t, u, v;	
-				
-				// if it didn't pass with the unit, check without the unit, otherwise check for NESW
-				if (unit != "" && !firstCheck) {
-					link_1 = pog + temp + tag + ".html";
-					var a = temp + tag;
-					jQURL(link_1, a, fly, 0);
-					firstCheck = true;
-					checkr = setTimeout(function(){ check(); }, 1000);
-					
-				} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
-					temp = temp.replace(nesw[0], "***");
-				
+			} else if (nesw = temp.match(/(_N_|_North_|_E_|_East_|_S_|_South_|_W_|_West_)/i)) {	
+				temp = temp.replace(nesw[0], "***");
 
-		
-					switch(nesw[0]) {			
-						case "_N_":				
-						case "_North_":
-							t = "_";	u = "_N_";	v = "_North_";	break;
-						case "_E_":
-						case "_East_":
-							t = "_";	u = "_E_";	v = "_East_";	break;
-						case "_S_":
-						case "_South_":
-							t = "_";	u = "_S_";	v = "_South_";	break;
-						case "_W_":
-						case "_West_":
-							t = "_";	u = "_W_";	v = "_West_";	break;
-						default:
-							t = "_";	u = nesw[0];	v = "_";
-					}
 	
-	
-					temp = temp.replace("***", t);
-					DOB(pog + temp + x + ".html", temp + x, fly);
-					DOB(pog + temp + y + ".html", temp + y, fly);
-					DOB(pog + temp + z + ".html", temp + z, fly);
-	
-					temp = temp.replace(t, u);
-					DOB(pog + temp + x + ".html", temp + x, fly);
-					DOB(pog + temp + y + ".html", temp + y, fly);
-					DOB(pog + temp + z + ".html", temp + z, fly);
-	
-					temp = temp.replace(u, v);
-					DOB(pog + temp + x + ".html", temp + x, fly);
-					DOB(pog + temp + y + ".html", temp + y, fly);
-					DOB(pog + temp + z + ".html", temp + z, fly);
-				
-				
+				switch(nesw[0]) {			
+					case "_N_":				
+					case "_North_":
+						t = "_";	u = "_N_";	v = "_North_";	break;
+					case "_E_":
+					case "_East_":
+						t = "_";	u = "_E_";	v = "_East_";	break;
+					case "_S_":
+					case "_South_":
+						t = "_";	u = "_S_";	v = "_South_";	break;
+					case "_W_":
+					case "_West_":
+						t = "_";	u = "_W_";	v = "_West_";	break;
+					default:
+						t = "_";	u = nesw[0];	v = "_";
 				}
-		
-		
-		
-				else {
-					$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
-						+ "<strong style='background:#232932;color:#7a8ba3;'>We tried:</strong><br><em>"
-						+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
-						+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
-						+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a></em>");
-				}
+
+
+				temp = temp.replace("***", t);
+				DOB(pog + temp + x + ".html", temp + x, fly);
+				DOB(pog + temp + y + ".html", temp + y, fly);
+				DOB(pog + temp + z + ".html", temp + z, fly);
+
+				temp = temp.replace(t, u);
+				DOB(pog + temp + x + ".html", temp + x, fly);
+				DOB(pog + temp + y + ".html", temp + y, fly);
+				DOB(pog + temp + z + ".html", temp + z, fly);
+
+				temp = temp.replace(u, v);
+				DOB(pog + temp + x + ".html", temp + x, fly);
+				DOB(pog + temp + y + ".html", temp + y, fly);
+				DOB(pog + temp + z + ".html", temp + z, fly);
 			
+			}
+	
+			else {
+				$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
+					+ "<strong style='background:#232932;color:#7a8ba3;'>We tried:</strong><br><em>"
+					+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
+					+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
+					+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a></em>");
+			}
 		
 		} //function check END//
 
 
-		if (!shootFound && testNum == 3) { checkr = setTimeout(function(){ check(); }, 500); }
+		if (!shootFound && (testNum == 3 || testNum == 0)) { check(); }
 	///////////////////////////////////////////////
 	} 
 	else {
