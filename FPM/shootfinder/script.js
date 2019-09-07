@@ -1,6 +1,7 @@
-var checkr, testNum;
+var shootFound, testNum, failed;
 /////////////////////////////
 function save_search(html,url,addx) {
+	shootFound = true;
 
 	var ht = JSON.stringify(html);
 		ht = ht.replace(/(.*)(\<meta itemprop=\\"image\\" content=\\")/, "");
@@ -38,15 +39,16 @@ function jQURL(url, addx, fly, tNum) {
 		var ln = Object.size(html);
 		if (ln > 1) { 
 			document.getElementById("tha_link").innerHTML = "<span></span>";
-			clearTimeout(checkr);
 			
 			save_search(html,url,addx);
 			if(fly){window.open(url, '_blank');}
-			return true;
+			//return true;
 		}
+		else {
+			//return false;
+		} 
 	});
 	testNum = tNum;
-	return false;
 }
 
 function DOB(url, addx, fly) {
@@ -83,7 +85,8 @@ function capital_letter(str) {
 	
 /////////////////////////////
 $("#fpm").click(function(){
-	
+		shootFound = false;
+		
 	var fly = document.getElementById("fly").checked;
 	var addy = document.getElementById("addy").value;
 		addy = addy.trim();
@@ -167,19 +170,19 @@ $("#fpm").click(function(){
 		
 		link_1 = pog + temp + x + ".html";
 		var a = temp + x;
-		var shootFound = jQURL(link_1, a, fly, 1);
+		jQURL(link_1, a, fly, 1);
 	
 		if (!shootFound && testNum == 1) {
 			link_2 = pog + temp + y + ".html";
 			var b = temp + y;
-			shootFound = jQURL(link_2, b, fly, 2);
+			jQURL(link_2, b, fly, 2);
 		} 
 		if (!shootFound && testNum == 2) {
 			link_3 = pog + temp + z + ".html";
 			var c = temp + z;
-			shootFound = jQURL(link_3, c, fly, 3);
+			jQURL(link_3, c, fly, 3);
 		}
-	
+		//if (!shootFound && testNum == 3) { failed = true; }
 	
 	
 	
@@ -237,7 +240,7 @@ $("#fpm").click(function(){
 	
 			else {
 				$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
-					+ "<strong style='background:#232932;color:#7a8ba3;'>We tried:</strong><br><em>"
+					+ "<strong style='background:#232932;color:#7a8ba3;'>Try These:</strong><br><em>"
 					+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
 					+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
 					+ "<a href='"+link_3+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_3+"</a></em>");
@@ -245,8 +248,10 @@ $("#fpm").click(function(){
 		
 		} //function check END//
 
-
-		if (!shootFound && (testNum == 3 || testNum == 0)) { check(); }
+		setTimeout(function(){
+			if (!shootFound) { check(); }
+		}, 1000);
+		//if (failed) { check(); }
 	///////////////////////////////////////////////
 	} 
 	else {
