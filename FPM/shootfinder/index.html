@@ -16,7 +16,9 @@
 	
 	<link rel="stylesheet" href="https://raw.githubusercontent.com/j1edward1/j1edward1.github.io/master/FPM/shootfinder/style.css" />
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
-	<script>		
+	<script>	
+	
+	// https://raw.githubusercontent.com/j1edward1/j1edward1.github.io/master/FPM/shootfinder/	
 	
 		function clothes(who) {
 			document.getElementById(who).style.opacity = "0";
@@ -84,7 +86,7 @@
 		</span>
 
 		<footer>
-			<input type="button" class="clearInput" id="fpm" value="Search"/>
+			<button class="clearInput" id="fpm">Search</button>
 			<input type="text" id="addy" value="123 ABC Lane"/>	
 			<input type="checkbox" id="fly" checked hidden/>	
 			<button id="flyToggleTab" onclick='if(document.getElementById("fly").checked==true){this.style.border="2px outset #343a43";this.style.fontWeight="300";this.style.color="#ccc";document.getElementById("fly").checked=false;}else{this.style.border="4px ridge #343a43";this.style.fontWeight=300;this.style.color="#565c65";document.getElementById("fly").checked=true;}'>Open Search in New Tab</button>	
@@ -100,6 +102,34 @@
 $(document).ready(function(){
 
 	var w = window.innerWidth;
+	
+	if (w <= 700) {
+	//	$("#fpm-logo").css("width",65);
+		$("#boom").css("display", "none");
+		$("#flyToggleTab").css("display", "none");
+		$("#fly").css("checked", false);
+	}
+	
+	$(window).resize(function(e){
+		var w = window.innerWidth;
+		if (w <= 700) {
+		//	$("#fpm-logo").css("width",65);
+			$("#boom").css("display", "none");
+			$("#flyToggleTab").css("display", "none");
+			$("#fly").css("checked", false);
+		} else {
+		//	$("#fpm-logo").css("width",125);
+			$("#boom").css("display", "block");
+			$("#flyToggleTab").css("display", "inline-block");
+			$("#fly").css("checked", true);
+			
+		}
+	});
+
+
+
+
+
 
 	
 	$("#addy").focus(function(){
@@ -114,20 +144,6 @@ $(document).ready(function(){
 			//document.getElementById("addy").style.color = "#565c65";
 		}
 	});
-	
-	
-	
-	$("#comment").click(function() {
-		//$("#formBox").css("opacity", "0.9");
-		$("#formBox").css("right", "20px");
-	});
-	$("#closeForm").click(function() {
-		//$("#formBox").css("opacity", "0");
-		$("#formBox").css("right", "-100vw");
-	});
-	$("#myFrame").on("load", function () {
-		$("#formBox").css("right", "-100vw");
-	})
 	
 });
 </script>

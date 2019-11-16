@@ -88,12 +88,18 @@ hr { border:1px dotted #7a8ba3; width:90%; }
 	}	
 
 #tha_link { 
-	text-align:center;
+	font-size:15px;
+	text-align:center;	
+	max-width:95vw;
+		width:95vw;
+	min-width:95vw;
 	padding:0px 10px 20px 10px; 
-	margin:5px 0px;
+	margin:auto;
+	margin-top:100px;
 	position:relative;
 	outline:none;
 	display:inline-block;
+	overflow:scroll;
 	}
 #addy, #fbText {  
 	background:#232931; 
@@ -104,7 +110,7 @@ hr { border:1px dotted #7a8ba3; width:90%; }
 	text-align:center;
 	font-size:15px;
 	line-height:18px;
-	min-width:200px;
+	min-width:230px;
 		width:30vw;
 		height:33px;
 	padding:2px; 
@@ -113,7 +119,7 @@ hr { border:1px dotted #7a8ba3; width:90%; }
 	resize:none;
 	float:left;
 	}
-.clearInput { 
+.clearInput, #fpm { 
 	background:#232931; 
 	color:#dde; 
 	border:2px outset #343a43; 
