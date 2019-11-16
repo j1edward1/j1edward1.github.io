@@ -129,8 +129,7 @@ hr { border:1px dotted #7a8ba3; width:90%; }
 	float:left;
 	}
 .clearInput:hover, #flyToggleTab:hover { 
-	background:#232931; 
-	opacity:0.9;
+	background:#343a43; 
 	cursor:pointer;
 	
 	-webkit-transition: .5s; 
