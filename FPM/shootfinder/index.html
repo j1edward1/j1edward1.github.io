@@ -6,31 +6,42 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" charset="utf-8" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Shoot Finder | Full Package Media" />
-	<meta property="og:site_name" content="Full Package Media" />
 	
 	<title>Shoot Finder | Full Package Media</title>
 	
 	<link rel="shortcut icon" href="https://fullpackagemedia.com/wp-content/uploads/2017/10/Logo-Web-FullPAckageMedia.png" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	
-	<link rel='stylesheet' id='divi-fonts-css' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext' type='text/css' media='all' />
-	<link rel='stylesheet' id='divi-style-css' href='https://fullpackagemedia.com/wp-content/themes/FullPackage/style.css?ver=3.18.9' type='text/css' media='all' />
-	
-	<link rel="stylesheet" href="https://j1edward1.github.io/FPM/shootfinder/style.css" />
+	<link rel="stylesheet" href="style.css" />
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>		
+	
+		function clothes(who) {
+			document.getElementById(who).style.opacity = "0";
+			setTimeout(function(){ document.getElementById(who).style.display = "none"; }, 500);
+		}
+	
+	</script>
 	<style type="text/css">
 		body { 
-			background: url(https://fullpackagemedia.com/wp-content/uploads/2016/12/Dallas_Real_Estate_Photography_001-2.jpg) no-repeat center center fixed;
+			background: url('https://static.tumblr.com/zrww9bn/UyOq12fsl/2207madera_025.jpg') no-repeat center center fixed;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
 			}	
 			/*
+			
+			https://static.tumblr.com/zrww9bn/cjqq12fsk/2207madera_029.jpg
+			
+			https://static.tumblr.com/zrww9bn/UyOq12fsl/2207madera_025.jpg
+						
 			https://fullpackagemedia.com/wp-content/uploads/2016/12/Dallas_Real_Estate_Photography_008-2.jpg
+			
+			https://fullpackagemedia.com/wp-content/uploads/2016/12/Dallas_Real_Estate_Photography_001-2.jpg
+			
 			*/
 	</style>
 </head>
@@ -38,145 +49,77 @@
 	
 	
 <body>
-	<div id="page-container">
 
-				
+	<div id="main-content">
+
 		<header>
-			<a href="https://fullpackagemedia.com/"> <img src="https://fullpackagemedia.com/wp-content/uploads/2017/10/Logo-Web-FullPAckageMedia.png" alt="Full Package Media" id="fpm-logo"/> </a>
-			
-			
-			<ul class="et-social-icons">
-				<li class="et-social-icon"> <a href="http://facebook.com/FullPackageMedia" target="_blank" class="icon"> <i title="Facebook" id="facebook" class="fa">&#xf082;</i>&nbsp; </a></li>
-				<br>
-				<li class="et-social-icon"> <a href="https://www.youtube.com/channel/UCD89CqQ0FXF64kRD-p18LDA/videos" target="_blank" class="icon"> <i title="Youtube" id="youtube" class="fa">&#xf167;</i>&nbsp; </a></li>
-				<br>
-				<li class="et-social-icon"> <a href="https://www.instagram.com/fullpackagemedia/" target="_blank" class="icon"> <i title="Instagram" id="instagram" class="fa">&#xf16d;</i>&nbsp; </a></li>
-				<br>
-				<li class="et-social-icon"> <a href="https://fullpackagemedia.com/reviews" target="_blank" class="icon"> <i title="Google" id="google" class="fa">&#xf2b3;</i>&nbsp; </a></li>
-			</ul>
-			
+			<a href="https://fullpackagemedia.com/"> <img src="https://fullpackagemedia.com/wp-content/uploads/2017/10/Logo-Web-FullPAckageMedia.png" alt="Full Package Media" id="fpm-logo"/> </a> 
+			<br><br>Enter Shoot<br>Address Below
 		</header>
+				
+		<div id="wrapper">
 			
-		<div id="et-main-area">
+			<div id="tha_link"></div>
+
+			<div id="boxes"></div>
+
+		</div>
 		
-		
-			<div id="main-content">
-				
-				
-				
-				
-				<div id="wrapper">
-					<br><br> <h1>Enter Shoot Address</h1> <br><br><br>
-					<textarea id="addy">123 ABC Lane</textarea>
-					<br style="padding:0px;margin:0px;"/>
-					<input type="button" class="clearInput" id="fpm" value="Find"/>
-					<br>
-					<span style="color:#fff;font-size:18px;font-weight:600;">
-						Open Link in New Tab
-						<input type="checkbox" id="fly" checked hidden/>
-						<i class="fa" id="flyToggle" title="Open Link in New Tab" onclick="if(this.innerHTML=='&#xf204;'){this.innerHTML='&#xf205;'; document.getElementById('fly').checked=true;}else{this.innerHTML='&#xf204;'; document.getElementById('fly').checked=false;}">&#xf205;</i>
-					</span>
-	
-	
-					<span hidden>
-					123 ABC Lane
-					
-					3203 Carlisle Street #161, Dallas, TX, 75204
-					
-					5204 Steinbeck Street, Carrollton, TX, 75010
-					
-					302 S Benge St
-					McKinney, TX 75069, USA
-					
-					11166 Parliament Ln
-					Frisco, TX, 75035
-					</span>
-					<br><div id="tha_link"></div>
-	
-				
-		 
-					<div id="wrapper2">	
-						<h2 id="headr">Searches</h2>
-						<div id="boxes"></div>
-		
-		
-		
-						<br><br><br><br>
-						<footer id="main-footer">
-							<div id="footer-bottom">
-								<div id="comment"><span style="font-size:11px;">Feedback</span><br><i class='fa fa-comment'></i></div>			
-								<ul class="et-social-icons-footer">
-							
-									<li class="et-social-icon-footer"> <a href="http://facebook.com/FullPackageMedia" target="_blank" class="icon"> <i title="Facebook" class="fa">&#xf082;</i>&nbsp; </a></li>
-									<li class="et-social-icon-footer"> <a href="https://www.youtube.com/channel/UCD89CqQ0FXF64kRD-p18LDA/videos" target="_blank" class="icon"> <i title="Youtube" class="fa">&#xf167;</i>&nbsp; </a></li>
-									<li class="et-social-icon-footer"> <a href="https://www.instagram.com/fullpackagemedia/" target="_blank" class="icon"> <i title="Instagram" class="fa">&#xf16d;</i>&nbsp; </a></li>
-									<li class="et-social-icon-footer"> <a href="https://fullpackagemedia.com/reviews" target="_blank" class="icon"> <i title="Google" class="fa">&#xf2b3;</i>&nbsp; </a></li>
-								
-								</ul>
-								<p id="footer-info"> &copy; 2019 Full Package Media. All rights reserved. All Full Package Media drone pilots are licensed under FAA Part 107| <a href="https://fullpackagemedia.com/sitemap/" id="sitemap">Sitemap</a> | <a href="https://fullpackagemedia.com/privacy-policy/">Privacy Policy</a>
-								</p>
-							</div>
-						</footer>
-					</div><!--wrapper2-->
-				</div><!--wrapper-->
-				
-				<div id="formBox">
-					<h4 id="closeForm">X</h4>
-					<iframe id="myFrame" src="https://jedbase.azurewebsites.net/resources/feedbackform.html"></iframe>
-				</div>
+		<span hidden>
+			123 ABC Lane
 			
-		
-			</div><!--main-content-->
-				
-		</div><!--et-main-area-->
-		
-	</div><!--page-container-->
+			4933 N Colony Blvd
+			The Colony, TX 75056, USA
+			
+			3608 Plum Vista Pl, Arlington, TX, 76005
+			
+			4232 McKinney Ave #101, Dallas, TX, 75205
+			
+			3203 Carlisle Street #161, Dallas, TX, 75204
+			
+			5204 Steinbeck Street, Carrollton, TX, 75010
+			
+			11166 Parliament Ln
+			Frisco, TX, 75035
+		</span>
+
+		<footer>
+			<input type="button" class="clearInput" id="fpm" value="Search"/>
+			<input type="text" id="addy" value="123 ABC Lane"/>	
+			<input type="checkbox" id="fly" checked hidden/>	
+			<button id="flyToggleTab" onclick='if(document.getElementById("fly").checked==true){this.style.border="2px outset #343a43";this.style.fontWeight="300";this.style.color="#ccc";document.getElementById("fly").checked=false;}else{this.style.border="4px ridge #343a43";this.style.fontWeight=300;this.style.color="#565c65";document.getElementById("fly").checked=true;}'>Open Search in New Tab</button>	
+			<input type="text" id="boom" value="BO:OM" readonly/>	
+		</footer>
+					
+		<div id="formBox">
+			<h4 id="closeForm">X</h4>
+			<iframe id="myFrame" src="https://jedbase.azurewebsites.net/resources/feedbackform.html"></iframe>
+		</div>
+
+	</div><!--Main Content-->
 	
 
 </body>
-<script src="https://j1edward1.github.io/FPM/shootfinder/script.js"></script>
+<script src="script.js"></script>
 <script>
 $(document).ready(function(){
 
 	var w = window.innerWidth;
-	if (w <= 700) {
-		$("#fpm-logo").css("width",65);
-		$("#fpm-logo").css("top",10);
-		$("#fpm-logo").css("left",10);
-		$(".et-social-icons").css("display", "none");
-		$(".et-social-icons-footer").css("display", "inline-block");
-	}
 
-	$(window).resize(function(e){
-		var w = window.innerWidth;
-		if (w <= 700) {
-			$("#fpm-logo").css("width",65);
-			$("#fpm-logo").css("top",10);
-			$("#fpm-logo").css("left",10);
-			$(".et-social-icons").css("display", "none");
-			$(".et-social-icons-footer").css("display", "inline-block");
-		} else {
-			$("#fpm-logo").css("width",125);
-			$("#fpm-logo").css("top",20);
-			$("#fpm-logo").css("left",20);
-			$(".et-social-icons").css("display", "inline-block");
-			$(".et-social-icons-footer").css("display", "none");
-			
-		}
-	});
 	
 	$("#addy").focus(function(){
-		if (document.getElementById("addy").innerHTML === "123 ABC Lane") {	
-			document.getElementById("addy").innerHTML = "";
-			document.getElementById("addy").style.color = "#232932";
+		if (document.getElementById("addy").value === "123 ABC Lane") {	
+			document.getElementById("addy").value = "";
+			//document.getElementById("addy").style.color = "#dde";
 		}
 	});
 	$("#addy").blur(function(){
-		if (document.getElementById("addy").innerHTML === "") {	
-			document.getElementById("addy").innerHTML = "123 ABC Lane";
-			document.getElementById("addy").style.color = "#aeaeae";
+		if (document.getElementById("addy").value === "") {	
+			document.getElementById("addy").value = "123 ABC Lane";
+			//document.getElementById("addy").style.color = "#565c65";
 		}
 	});
+	
 	
 	
 	$("#comment").click(function() {

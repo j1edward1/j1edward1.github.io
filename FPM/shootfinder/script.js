@@ -11,14 +11,17 @@ function save_search(html,url,addx) {
 	
 	var img = ht.replace(/(\?k=)(.*)/,""); 
 	var add = addx.replace(/_/g, " ");
-	var save = '<div class="box"><a href="' + url + '" target="_blank"><img src="' + img + '" alt="not available" /><em class="addr">' + add +  '</em></a></div>';
-	
+	var d = new Date();
+	var n = d.getTime();
+	var c = "box_" + n;
+	var save = '<div class="box" id="'+c+'"><span class="headerBars"><span class="titleBar">' + add + '</span><input type="button" value="X" class="x_button" name="'+c+'" onclick="clothes(this.name)"/></span><a href="' + url + '" target="_blank"><img src="' + img + '" alt="not available" /></a></div>';
+
 	//
 	
 	$("#boxes").prepend( 
 		save
 	);
-	$('#wrapper').animate({ scrollTop: 4999 }, 1000);
+	$('#wrapper').animate({ scrollTop: 999 }, 1000);
 
 }
 
@@ -90,7 +93,7 @@ $("#fpm").click(function(){
 	var fly = document.getElementById("fly").checked;
 	var addy = document.getElementById("addy").value;
 		addy = addy.trim();
-		addy = addy.replace(/\n(.*)/, "");
+		addy = addy.replace(/\s\s\s(.*)/, "");
 		addy = addy.replace(/(\s\s*)/gi, " ");
 		addy = capital_letter(addy);
 	
@@ -239,7 +242,7 @@ $("#fpm").click(function(){
 			}
 	
 			else {
-				$("#tha_link").append("<br><br><h2>Sorry, we couldn't find that place!</h2>" 
+				$("#tha_link").append("<br><br><h2>Having trouble finding that place!</h2>" 
 					+ "<strong style='background:#232932;color:#7a8ba3;'>Try These:</strong><br><em>"
 					+ "<a href='"+link_1+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_1+"</a><br>"
 					+ "<a href='"+link_2+"' style='background:#232932;color:#7a8ba3;' target='_blank'>"+link_2+"</a><br>"
@@ -250,7 +253,7 @@ $("#fpm").click(function(){
 
 		setTimeout(function(){
 			if (!shootFound) { check(); }
-		}, 1000);
+		}, 2000);
 		//if (failed) { check(); }
 	///////////////////////////////////////////////
 	} 
